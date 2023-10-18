@@ -1,5 +1,4 @@
 import { sql } from '@vercel/postgres';
-import Error from 'next/error';
 import { NextResponse } from 'next/server';
 
 

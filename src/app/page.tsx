@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import Subscribe from './Components/Subscribe'
 
 const Button = ({
   children,
@@ -7,10 +8,10 @@ const Button = ({
 }: {
   children: React.ReactNode;
   arrow?:boolean,
-  type?:string
+  type?:"button" | "submit" | "reset" 
 }) => {
   return <button
-    type={type}
+    type={type ? type : 'button'}
     className="cursor-pointer group rounded-lg border border-transparent px-5 py-4 transition-colors 
               hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
   >
@@ -28,7 +29,7 @@ const Button = ({
 
 export default function Home() {
   
-  const handleError = (xhr: any, response: any) {
+  const handleError = (xhr: any, response: any) => {
     console.log({
       xhr,
       response
@@ -97,42 +98,7 @@ export default function Home() {
 
       </div>
     </div>
-    
-    <section id="subscribe" className="flex min-h-screen flex-col items-center justify-between p-24">
-
-    <div id="subscriptionFormDiv" className="max-w-2xl w-full bg-dark rounded-lg p-8 shadow-lg"
-         hx-trigger="submit"
-         hx-post="/subscribe"
-         hx-swap="outerHTML"
-         hx-target="#subscriptionFormDiv"
-         hx-indicator="#loadingIndicator"
-         hx-on-error="handleError"
-         hx-vals="#email">
-        <h1 className="text-3xl font-bold mb-6">Subscribe to Bikoret</h1>
-        <p className="text-gray-400 mb-6">Stay informed with the latest crypto insights. Subscribe now to get updates delivered to your inbox.</p>
-
-        <form id="subscriptionForm">
-            <label htmlFor="email" className="block text-sm font-medium text-gray-400 mb-2">Email Address</label>
-            <input type="email" id="email" name="email" required
-                   className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:border-blue-500" />
-
-            <button type="submit" hx-boost="true" 
-              className="
-                cursor-pointer group rounded-lg border border-transparent px-5 py-4 transition-colors 
-                hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30
-              ">
-                Subscribe
-            </button>
-        </form>
-        <div id="loadingIndicator" className="hidden">Loading...</div>
-        <span id="errorSpan" className="text-red-500 mt-2"></span>
-        <div id="successMessage" className="hidden">
-            Thank you for subscribing!
-        </div>
-    </div>
-
-</section>
-
+    <Subscribe />
 
   </>
 }
