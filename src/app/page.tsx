@@ -1,33 +1,45 @@
-'use client'
-
-
 import Image from 'next/image'
-import { MouseEvent, MouseEventHandler, useState } from 'react'
 
 const Button = ({
-  onClick,
-  text
+  children,
+  arrow,
+  type
 }: {
-  onClick: MouseEventHandler<HTMLDivElement>,
-  text: string
+  children: React.ReactNode;
+  arrow?:boolean,
+  type?:string
 }) => {
-  return <div
-    onClick={onClick}
+  return <button
+    type={type}
     className="cursor-pointer group rounded-lg border border-transparent px-5 py-4 transition-colors 
               hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
   >
     <h2 className={`mb-1 text-2xl font-semibold`}>
-      {text}{' '}
-      <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-        -&gt;
-      </span>
+      {children}{' '}
+
+      {arrow && 
+        <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
+          -&gt;
+        </span>
+      }
     </h2>
-  </div>
+  </button>
 }
 
 export default function Home() {
-  const [email, setEmail] = useState("");
-  const [submitted, setSubmitted] = useState(false);
+  
+  const handleError = (xhr: any, response: any) {
+    console.log({
+      xhr,
+      response
+    })
+  }
+//   function handleError(xhr, response) {
+//     let errorSpan = document.getElementById('errorSpan');
+//     errorSpan.innerText = response.message; // Assuming the server sends an error message in the response
+//     errorSpan.classList.remove('hidden');
+//     document.getElementById('loadingIndicator').classList.add('hidden');
+// }
 
   return <>
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
@@ -53,7 +65,7 @@ export default function Home() {
       </div>
 
       <div className="flex place-items-center">
-        <a href="#subscribe"><Button onClick={() => { }} text="Get Starterd" /></a>
+        <a href="#subscribe"><Button arrow={true}>Get Starterd</Button></a>
       </div>
 
     </main>
@@ -85,57 +97,42 @@ export default function Home() {
 
       </div>
     </div>
-    <section id="subscribe" className="flex min-h-screen flex-col items-center justify-between p-24" >
+    
+    <section id="subscribe" className="flex min-h-screen flex-col items-center justify-between p-24">
 
-      <div className="max-w-2xl w-full bg-dark rounded-lg p-8 shadow-lg">
+    <div id="subscriptionFormDiv" className="max-w-2xl w-full bg-dark rounded-lg p-8 shadow-lg"
+         hx-trigger="submit"
+         hx-post="/subscribe"
+         hx-swap="outerHTML"
+         hx-target="#subscriptionFormDiv"
+         hx-indicator="#loadingIndicator"
+         hx-on-error="handleError"
+         hx-vals="#email">
+        <h1 className="text-3xl font-bold mb-6">Subscribe to Bikoret</h1>
+        <p className="text-gray-400 mb-6">Stay informed with the latest crypto insights. Subscribe now to get updates delivered to your inbox.</p>
 
-        {submitted
-          ?
-          <div className="group rounded-lg px-5 py-4">
-            <h2 className={`mb-1 text-2xl font-semibold text-center text-green`}>
-              Thank you for your subscription
-            </h2>
-          </div>
-          : <>
-            <h1 className="text-3xl font-bold mb-6">Subscribe to Bikoret</h1>
-            <p className="text-gray-400 mb-6">Stay informed with the latest crypto insights. Subscribe now to get updates delivered to your inbox.</p>
+        <form id="subscriptionForm">
+            <label htmlFor="email" className="block text-sm font-medium text-gray-400 mb-2">Email Address</label>
+            <input type="email" id="email" name="email" required
+                   className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:border-blue-500" />
 
-            <form className="mb-6">
-              <label htmlFor="email" className="block text-sm font-medium text-gray-400 mb-2">Email Address</label>
-              <input type="email" id="email" name="email" value={email} onChange={e => { setEmail(e.target.value) }} required className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:border-blue-500" />
+            <button type="submit" hx-boost="true" 
+              className="
+                cursor-pointer group rounded-lg border border-transparent px-5 py-4 transition-colors 
+                hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30
+              ">
+                Subscribe
+            </button>
+        </form>
+        <div id="loadingIndicator" className="hidden">Loading...</div>
+        <span id="errorSpan" className="text-red-500 mt-2"></span>
+        <div id="successMessage" className="hidden">
+            Thank you for subscribing!
+        </div>
+    </div>
 
-              <Button
-                onClick={(e: MouseEvent) => {
-                  e.preventDefault();
+</section>
 
-
-                  fetch('/api/subscribe', {
-                    method: 'POST',
-                    headers: {
-                      'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({ email: email }),
-                  })
-                    .then(response => {
-                      if (response.ok) {
-                        return response.json();
-                      }
-                      throw new Error('Network response was not ok.');
-                    })
-                    .then(data => {
-                      setSubmitted(true);
-                    })
-                    .catch(error => {
-                      alert('Unable to subscribe. Thank you though!')
-                    });
-                }}
-                text="Subscribe"
-              />
-            </form>
-          </>
-        }
-      </div>
-    </section>
 
   </>
 }
