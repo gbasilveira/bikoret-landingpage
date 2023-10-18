@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import Subscribe from './Components/Subscribe'
+import Subscribe from '@/Components/Subscribe'
 
 const Button = ({
   children,
