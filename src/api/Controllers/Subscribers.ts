@@ -22,6 +22,7 @@ export const CreateSubscriber = async (req: NextRequest) => {
             data:{email, gdpr, marketing}
         });
 
+
         return NextResponse.json({
             success: true,
             message: "Subscriber created successfully."
