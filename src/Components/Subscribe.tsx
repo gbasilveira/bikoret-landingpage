@@ -49,7 +49,7 @@ export default () => {
     }
 
     return <>
-        <section id="subscribe" className="flex min-h-screen flex-col items-center justify-between p-24">
+        <section id="subscribe" className="flex flex-col items-center justify-center py-16 min-h-screen px-[5%] bg-black">
             <div id="subscriptionFormDiv" className="max-w-2xl w-full bg-dark rounded-lg p-8 shadow-lg" >
                 <h1 className="text-3xl font-bold mb-6">Subscribe to Bikoret</h1>
                 {success

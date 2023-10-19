@@ -7,8 +7,8 @@ const Button = ({
   type
 }: {
   children: React.ReactNode;
-  arrow?:boolean,
-  type?:"button" | "submit" | "reset" 
+  arrow?: boolean,
+  type?: "button" | "submit" | "reset"
 }) => {
   return <button
     type={type ? type : 'button'}
@@ -18,7 +18,7 @@ const Button = ({
     <h2 className={`mb-1 text-2xl font-semibold`}>
       {children}{' '}
 
-      {arrow && 
+      {arrow &&
         <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
           -&gt;
         </span>
@@ -27,26 +27,99 @@ const Button = ({
   </button>
 }
 
-export default function Home() {
-  
-  const handleError = (xhr: any, response: any) => {
-    console.log({
-      xhr,
-      response
-    })
-  }
-//   function handleError(xhr, response) {
-//     let errorSpan = document.getElementById('errorSpan');
-//     errorSpan.innerText = response.message; // Assuming the server sends an error message in the response
-//     errorSpan.classList.remove('hidden');
-//     document.getElementById('loadingIndicator').classList.add('hidden');
-// }
+const Content = () => <>
+  <main className="flex flex-col min-h-screen bg-gradient-to-b from-black via-blue-900 to-gray-900">
 
-  return <>
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
+    {/* Hero Section */}
+    <section className="flex flex-col items-center justify-center h-screen relative">
+      <div className="absolute top-0 left-0 w-full h-full bg-blob"></div>
+      <div className="z-10 text-center max-w-3xl mx-auto">
+        <h1 className="text-4xl font-bold mb-5">Welcome to Bikoret - Your Gateway to Crypto Insights!</h1>
+        <p className="text-gray-400 text-lg mb-5 mt-5">Bikoret is your premier destination for diving into the exciting world of cryptocurrency trading. Empowering both beginners and seasoned traders, Bikoret offers unparalleled insights, data analytics, and real-time trends to help you make informed decisions in the fast-paced crypto market.</p>
+        <Button><a href="#subscribe">Get Started</a></Button>
       </div>
+    </section>
 
+    {/* Features Section */}
+    <section className="flex flex-col items-center justify-center py-16 min-h-screen px-[5%] bg-black">
+  <div className="container mx-auto flex flex-col items-center ">
+    <h2 className="text-3xl font-bold mb-6 text-white">What Sets Bikoret Apart?</h2>
+    {/* Feature Cards */}
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+      {/* Feature Card 1 */}
+      <div className="flex flex-col p-6 rounded-lg shadow-md text-center h-full">
+        <span className="text-4xl mb-4">🚀</span>
+        <p className="text-gray-200 flex-1">Comprehensive Analytics: Uncover detailed analytics and historical data on a wide range of crypto tokens.</p>
+      </div>
+      {/* Feature Card 2 */}
+      <div className="flex flex-col p-6 rounded-lg shadow-md text-center h-full ">
+        <span className="text-4xl mb-4">📊</span>
+        <p className="text-gray-200 flex-1">Real-time Monitoring: Stay ahead of the curve with real-time data updates. Track live market changes, price fluctuations, and trading activities across multiple blockchain networks.</p>
+      </div>
+      {/* Feature Card 3 */}
+      <div className="flex flex-col p-6 rounded-lg shadow-md text-center h-full ">
+        <span className="text-4xl mb-4">🔍</span>
+        <p className="text-gray-200 flex-1">Smart Insights: Gain actionable insights with our intelligent algorithms. Bikoret's smart suggestions and predictive analysis help you identify potential investment opportunities and optimize your trading strategy.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+    {/* Call to Action Section */}
+    <section className=" flex flex-col items-center justify-center text-center  min-h-screen px-[5%]">
+      <div className="container mx-auto">
+
+        <h2 className="text-3xl font-bold mb-6">Ready to Dive In?</h2>
+        <p className="text-gray-300 text-lg mb-8">Join Bikoret today and embark on a journey where data meets insight, and opportunity meets action. Start exploring the future of crypto trading!</p>
+        <Button><a href="#subscribe">Get Started</a></Button>
+      </div>
+    </section>
+
+  </main>
+
+</>
+
+export default function Home() {
+  return <>
+
+
+<main className="flex min-h-screen flex-col items-center justify-between p-8 sm:p-16 max-w-full mx-auto">
+
+  <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
+  </div>
+
+  <div className="relative flex items-center w-full max-w-2xl">
+    <div className="absolute top-[-10%] left-[-20%] w-[140%] h-[140%] rounded-full bg-gradient-radial from-gray-800 to-transparent blur-3xl"></div>
+    <div className="absolute -z-20 top-[-5%] left-[-2%] w-[110%] h-[110%] bg-gradient-conic from-sky-800 via-blue-900 blur-2xl"></div>
+    <div className="dark:bg-gradient-to-br dark:from-transparent dark:to-blue-700 dark:opacity-10 absolute -z-10 top-[-15%] left-[-15%] w-[130%] h-[130%]"></div>
+    <Image
+      className="relative dark:drop-shadow-[0 0 0.3rem #ffffff70] dark:invert"
+      src="/bikoret.svg"
+      alt="Bikoret Logo"
+      width={584}
+      height={77}
+      priority
+    />
+  </div>
+
+  <div className="flex place-items-center">
+    <a href="#subscribe"><Button arrow={true}>Get Started</Button></a>
+  </div>
+</main>
+
+
+
+    <Content />
+
+    <Subscribe />
+    
+
+  </>
+}
+
+
+      {/* 
       <div className="relative flex place-items-center 
         before:absolute before:h-[200px] before:w-[480px] before:-translate-x-[-50px] before:rounded-full before:bg-gradient-radial 
         before:from-white before:to-transparent before:blur-3xl before:content-['']
@@ -63,42 +136,4 @@ export default function Home() {
           height={77}
           priority
         />
-      </div>
-
-      <div className="flex place-items-center">
-        <a href="#subscribe"><Button arrow={true}>Get Starterd</Button></a>
-      </div>
-
-    </main>
-    <div className="flex min-h-screen flex-col items-center justify-between p-24">
-
-      <div className="relative flex place-items center mt-5">
-
-        <div className="max-w-3xl mx-auto bg-dark rounded-lg p-6 shadow-lg">
-          <h1 className="text-3xl font-bold mb-4">Welcome to Bikoret - Your Gateway to Crypto Insights!</h1>
-          <p className="text-gray-400 mb-6">Bikoret is your premier destination for diving into the exciting world of cryptocurrency trading. Empowering both beginners and seasoned traders, Bikoret offers unparalleled insights, data analytics, and real-time trends to help you make informed decisions in the fast-paced crypto market.</p>
-
-          <h2 className="text-xl font-bold mb-2">What Sets Bikoret Apart?</h2>
-          <ul className="list-disc ml-6 text-gray-400 mb-6">
-            <li className="mb-2">🚀 <strong>Comprehensive Analytics:</strong> Uncover detailed analytics and historical data on a wide range of crypto tokens.</li>
-            <li className="mb-2">📊 <strong>Real-time Monitoring:</strong> Stay ahead of the curve with real-time data updates. Track live market changes, price fluctuations, and trading activities across multiple blockchain networks.</li>
-            <li className="mb-2">🔍 <strong>Smart Insights:</strong> Gain actionable insights with our intelligent algorithms. Bikoret{'`'}s smart suggestions and predictive analysis help you identify potential investment opportunities and optimize your trading strategy.</li>
-            <li className="mb-2">🌐 <strong>Multi-Blockchain Support:</strong> Explore an extensive selection of over 18 blockchains, including Ethereum, BSC, Solana, and more.</li>
-            <li className="mb-2">📈 <strong>User-Friendly Interface:</strong> Experience our intuitive and user-friendly interface. Easily navigate through interactive charts, graphs, and tables, making complex data digestible for traders of all levels.</li>
-          </ul>
-
-          <h2 className="text-xl font-bold mb-2">Why Choose Bikoret?</h2>
-          <p className="text-gray-400 mb-6">Bikoret is not just a platform; it{'`'}s your strategic partner in the crypto market. Whether you{'`'}re a day trader, investor, or enthusiast, our platform equips you with the tools and knowledge needed to make confident decisions.</p>
-
-          <p className="text-gray-400 mb-6">Join Bikoret today and embark on a journey where data meets insight, and opportunity meets action. Start exploring the future of crypto trading!</p>
-
-
-          <p className="text-gray-700 mt-4">Stay informed. Stay ahead. Choose Bikoret.</p>
-        </div>
-
-      </div>
-    </div>
-    <Subscribe />
-
-  </>
-}
+      </div> */}
