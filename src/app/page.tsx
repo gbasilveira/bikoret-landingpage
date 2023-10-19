@@ -49,17 +49,20 @@ const Content = () => <>
       {/* Feature Card 1 */}
       <div className="flex flex-col p-6 rounded-lg shadow-md text-center h-full">
         <span className="text-4xl mb-4">🚀</span>
-        <p className="text-gray-200 flex-1">Comprehensive Analytics: Uncover detailed analytics and historical data on a wide range of crypto tokens.</p>
+        <h3><strong>Comprehensive Analytics</strong></h3>
+        <p className="text-gray-200 flex-1">Uncover detailed analytics and historical data on a wide range of crypto tokens.</p>
       </div>
       {/* Feature Card 2 */}
       <div className="flex flex-col p-6 rounded-lg shadow-md text-center h-full ">
         <span className="text-4xl mb-4">📊</span>
-        <p className="text-gray-200 flex-1">Real-time Monitoring: Stay ahead of the curve with real-time data updates. Track live market changes, price fluctuations, and trading activities across multiple blockchain networks.</p>
+        <h3><strong>Real-time Monitoring</strong></h3>
+        <p className="text-gray-200 flex-1">Stay ahead of the curve with real-time data updates. Track live market changes, price fluctuations, and trading activities across multiple blockchain networks.</p>
       </div>
       {/* Feature Card 3 */}
       <div className="flex flex-col p-6 rounded-lg shadow-md text-center h-full ">
         <span className="text-4xl mb-4">🔍</span>
-        <p className="text-gray-200 flex-1">Smart Insights: Gain actionable insights with our intelligent algorithms. Bikoret's smart suggestions and predictive analysis help you identify potential investment opportunities and optimize your trading strategy.</p>
+        <h3><strong>Smart Insights</strong></h3>
+        <p className="text-gray-200 flex-1">Gain actionable insights with our intelligent algorithms. Bikoret&apos;s smart suggestions and predictive analysis help you identify potential investment opportunities and optimize your trading strategy.</p>
       </div>
     </div>
   </div>

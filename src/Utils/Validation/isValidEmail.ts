@@ -2,4 +2,5 @@
 
 const emailRegex: RegExp = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-export default (email: string): boolean => emailRegex.test(email);
+const isValidEmail = (email: string): boolean => emailRegex.test(email);
+export default isValidEmail;

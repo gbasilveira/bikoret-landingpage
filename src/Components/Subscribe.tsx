@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 
-export default () => {
+const Page = () => {
     const [email, setEmail] = useState("");
     const [gdpr, setGDPR] = useState(false);
     const [marketing, setMarketing] = useState(false);
@@ -86,3 +86,5 @@ export default () => {
     </>
 
 }
+
+export default Page;

@@ -1,4 +1,4 @@
-export default () => {
+const Page = () => {
     return <>
         <div className="dark:text-gray-300 text-gray-700 bg-gray-100 dark:bg-gray-900 p-8">
 
@@ -6,7 +6,7 @@ export default () => {
 
             <p className="mb-4">Last Updated: October 19<sup>th</sup>, 2023</p>
 
-            <p className="mb-4">Welcome to Bikoret ("we," "us," or "our"). This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website bikoret.io (the "Site") and use our services, including any software applications offered by us (collectively, the "Service"). Please read this Privacy Policy carefully. If you do not agree with the terms of this Privacy Policy, please do not access the Site or use the Service.</p>
+            <p className="mb-4">Welcome to Bikoret (&quot;we&quot;, &quot;us&quot;, or &quot;our&quot;). This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website bikoret.io (the &quot;Site&quot;) and use our services, including any software applications offered by us (collectively, the &quot;Service&quot;). Please read this Privacy Policy carefully. If you do not agree with the terms of this Privacy Policy, please do not access the Site or use the Service.</p>
 
             <h2 className="text-xl font-semibold mb-2">1. Information We Collect</h2>
 
@@ -41,7 +41,7 @@ export default () => {
 
             <h2 className="text-xl font-semibold mb-2">6. Changes to This Privacy Policy</h2>
 
-            <p className="mb-4">We may update this Privacy Policy from time to time. The updated version will be indicated by an updated "Last Updated" date and the updated version will be effective as soon as it is accessible. We encourage you to review this Privacy Policy frequently to be informed of how we are protecting your information.</p>
+            <p className="mb-4">We may update this Privacy Policy from time to time. The updated version will be indicated by an updated &quot;Last Updated&quot; date and the updated version will be effective as soon as it is accessible. We encourage you to review this Privacy Policy frequently to be informed of how we are protecting your information.</p>
 
             <h2 className="text-xl font-semibold mb-2">7. Contact Us</h2>
 
@@ -51,3 +51,5 @@ export default () => {
 
     </>
 }
+
+export default Page;
